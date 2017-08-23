@@ -22447,7 +22447,7 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       });
       setTimeout(function () {
         _this2.resetText();
-      }, 2000);
+      }, 1000);
     }
   }, {
     key: "handleSwipeRight",
@@ -22459,7 +22459,7 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       });
       setTimeout(function () {
         _this3.resetText();
-      }, 2000);
+      }, 1000);
     }
   }, {
     key: "handleSwipeUp",
@@ -22471,7 +22471,7 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       });
       setTimeout(function () {
         _this4.resetText();
-      }, 2000);
+      }, 1000);
     }
   }, {
     key: "handleSwipeDown",
@@ -22483,7 +22483,7 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       });
       setTimeout(function () {
         _this5.resetText();
-      }, 2000);
+      }, 1000);
     }
   }, {
     key: "resetText",
@@ -22505,7 +22505,7 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
         },
         _react2.default.createElement(
           "p",
-          null,
+          { style: { fontSize: "50px" } },
           this.state.text
         )
       );
@@ -22660,9 +22660,9 @@ var ReactSwipeEventComponent = function (_Component) {
           this.handleSwipeLeft(1, event);
         }
         if (this.movePosition.deltaY < -tolerance) {
-          this.props.onSwipeUp(1, event);
+          this.props.handleSwipeUp(1, event);
         } else if (this.movePosition.deltaY > tolerance) {
-          this.props.onSwipeDown(1, event);
+          this.props.handleSwipeDown(1, event);
         }
       }
 

@@ -9,6 +9,20 @@ class SwipeEventExample extends ReactSwipeEventComponent {
       text: "Try swiping right/left/up/down",
     };
 
+    this.divStyle = {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+
+    this.pStyle = {
+      fontSize: "50px",
+    };
+
+    this.delayTime = 1000;
+
     this.setTolerance(30);
   }
 
@@ -16,53 +30,45 @@ class SwipeEventExample extends ReactSwipeEventComponent {
     this.setState({
       text: "You just swiped left!",
     });
-    setTimeout(() => {
-      this.resetText();
-    }, 2000);
+    this.delayResetText();
   }
 
   handleSwipeRight() {
     this.setState({
       text: "You just swiped right!",
     });
-    setTimeout(() => {
-      this.resetText();
-    }, 2000);
+    this.delayResetText();
   }
 
   handleSwipeUp() {
     this.setState({
       text: "You just swiped up!",
     });
-    setTimeout(() => {
-      this.resetText();
-    }, 2000);
+    this.delayResetText();
   }
 
   handleSwipeDown() {
     this.setState({
       text: "You just swiped down!",
     });
-    setTimeout(() => {
-      this.resetText();
-    }, 2000);
+    this.delayResetText();
   }
 
-  resetText() {
-    this.setState({
-      text: "Try swiping right/left/up/down",
-    });
+  delayResetText() {
+    setTimeout(() => {
+      this.setState({
+        text: "Try swiping right/left/up/down",
+      });
+    }, this.delayTime);
   }
 
   render() {
     return (
       <div
-        style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
-        onTouchStart={this.handleTouchStart}
-        onTouchMove={this.handleTouchMove}
-        onTouchEnd={this.handleTouchEnd}
+        style={this.divStyle}
+        {...this.touchEventProperties}
       >
-        <p>{this.state.text}</p>
+        <p style={this.pStyle}>{this.state.text}</p>
       </div>
     );
   }

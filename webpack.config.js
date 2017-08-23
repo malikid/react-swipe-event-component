@@ -5,7 +5,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'example'),
-    // libraryTarget: 'commonjs2',
   },
   module: {
     loaders: [
@@ -26,5 +25,4 @@ module.exports = {
       'node_modules',
     ],
   },
-  // watch: true,
 };
