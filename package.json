@@ -2,11 +2,11 @@
   "name": "react-swipe-event-component",
   "version": "0.1.0",
   "description": "Extend this component and swipe events are well-handled.",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "webpack; webpack-dev-server",
+    "start": "webpack-dev-server --content-base example",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel lib -d build",
+    "build": "babel lib -d dist",
     "lint": "eslint lib/**; exit 0",
     "lint:watch": "esw -w lib/**",
     "prepublish": "npm run build"
@@ -17,14 +17,15 @@
   },
   "keywords": [
     "react",
+    "react component",
     "swipe",
     "swipe event",
     "touch",
     "touch event",
     "mobile"
   ],
-  "author": "Mak Chang <malikid.chang@gmail.com>",
-  "license": "ISC",
+  "author": "MingHo Chang <malikid.chang@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/malikid/react-swipe-event-component/issues"
   },
