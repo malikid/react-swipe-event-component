@@ -1,8 +1,8 @@
 {
   "name": "react-swipe-event-component",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Extend this component and swipe events are well-handled.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "webpack; webpack-dev-server --content-base example",
     "test": "echo \"Error: no test specified\" && exit 1",
