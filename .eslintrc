@@ -41,7 +41,14 @@ rules: {
     'eqeqeq': ['warn', 'always'],
     'indent': ['warn', 2, { "SwitchCase": 1 }],
     'guard-for-in': 'warn',
-    'keyword-spacing': 'warn',
+    'keyword-spacing': ['warn', {
+      "overrides": {
+        "if": { "after": false },
+        "for": { "after": false },
+        "while": { "after": false },
+        "switch": { "after": false }
+      }
+    }],
     'new-parens': 'warn',
     'no-array-constructor': 'warn',
     'no-caller': 'warn',
