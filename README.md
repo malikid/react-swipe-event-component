@@ -2,11 +2,13 @@
 Extend this component and swipe events are well-handled.
 
 ### Demo
+---
 1. Open [demo site](https://malikid.github.io/react-swipe-event-component/example)
 2. **Open browser's Developer Tools, and change device to mobile**
 3. Play~ play~ play~
 
-### How to run example
+### How to run example locally
+---
 1. npm install -g webpack webpack-dev-server
 2. npm install
 3. npm start
@@ -14,8 +16,9 @@ Extend this component and swipe events are well-handled.
 5. **Open browser's Developer Tools, and change device to mobile**
 6. Have fun with it =)
 
-### How to use
-1. `npm install `
+### How to use it in your project
+---
+1. `npm install react-swipe-event-component --save`
 2. Extend ReactSwipeEventComponent instead of Component (import from React). For example:
 ```
 import React from "react";
