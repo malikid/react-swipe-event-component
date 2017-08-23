@@ -4,7 +4,7 @@
   "description": "Extend this component and swipe events are well-handled.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base example",
+    "start": "webpack; webpack-dev-server --content-base example",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel lib -d dist",
     "lint": "eslint lib/**; exit 0",

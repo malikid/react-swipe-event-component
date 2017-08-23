@@ -22403,6 +22403,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(32);
@@ -22433,6 +22435,20 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       text: "Try swiping right/left/up/down"
     };
 
+    _this.divStyle = {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    };
+
+    _this.pStyle = {
+      fontSize: "50px"
+    };
+
+    _this.delayTime = 1000;
+
     _this.setTolerance(30);
     return _this;
   }
@@ -22440,72 +22456,57 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
   _createClass(SwipeEventExample, [{
     key: "handleSwipeLeft",
     value: function handleSwipeLeft() {
-      var _this2 = this;
-
       this.setState({
         text: "You just swiped left!"
       });
-      setTimeout(function () {
-        _this2.resetText();
-      }, 1000);
+      this.delayResetText();
     }
   }, {
     key: "handleSwipeRight",
     value: function handleSwipeRight() {
-      var _this3 = this;
-
       this.setState({
         text: "You just swiped right!"
       });
-      setTimeout(function () {
-        _this3.resetText();
-      }, 1000);
+      this.delayResetText();
     }
   }, {
     key: "handleSwipeUp",
     value: function handleSwipeUp() {
-      var _this4 = this;
-
       this.setState({
         text: "You just swiped up!"
       });
-      setTimeout(function () {
-        _this4.resetText();
-      }, 1000);
+      this.delayResetText();
     }
   }, {
     key: "handleSwipeDown",
     value: function handleSwipeDown() {
-      var _this5 = this;
-
       this.setState({
         text: "You just swiped down!"
       });
-      setTimeout(function () {
-        _this5.resetText();
-      }, 1000);
+      this.delayResetText();
     }
   }, {
-    key: "resetText",
-    value: function resetText() {
-      this.setState({
-        text: "Try swiping right/left/up/down"
-      });
+    key: "delayResetText",
+    value: function delayResetText() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          text: "Try swiping right/left/up/down"
+        });
+      }, this.delayTime);
     }
   }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
-        {
-          style: { width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" },
-          onTouchStart: this.handleTouchStart,
-          onTouchMove: this.handleTouchMove,
-          onTouchEnd: this.handleTouchEnd
-        },
+        _extends({
+          style: this.divStyle
+        }, this.touchEventProperties),
         _react2.default.createElement(
           "p",
-          { style: { fontSize: "50px" } },
+          { style: this.pStyle },
           this.state.text
         )
       );
@@ -22532,10 +22533,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = __webpack_require__(32);
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -22561,7 +22558,7 @@ var ReactSwipeEventComponent = function (_Component) {
     key: "handleSwipeDown",
     value: function handleSwipeDown() {}
 
-    // Call this function in your constructor if you want to customize tolerance
+    // Call this function in constructor if you want to customize tolerance
 
   }, {
     key: "setTolerance",
@@ -22578,12 +22575,22 @@ var ReactSwipeEventComponent = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (ReactSwipeEventComponent.__proto__ || Object.getPrototypeOf(ReactSwipeEventComponent)).call(this, props));
 
-    _this.setTolerance(50);
+    _this.setTolerance(10);
     _this._fnBinding(_this, "_getPosition", "handleTouchStart", "handleTouchMove", "handleTouchEnd", "handleSwipeLeft", "handleSwipeRight");
+    _this._setPropertiesForTouchEvents();
     return _this;
   }
 
   _createClass(ReactSwipeEventComponent, [{
+    key: "_setPropertiesForTouchEvents",
+    value: function _setPropertiesForTouchEvents() {
+      this.touchEventProperties = {
+        onTouchStart: this.handleTouchStart,
+        onTouchMove: this.handleTouchMove,
+        onTouchEnd: this.handleTouchEnd
+      };
+    }
+  }, {
     key: "_fnBinding",
     value: function _fnBinding(context) {
       for (var _len = arguments.length, fns = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -22660,9 +22667,9 @@ var ReactSwipeEventComponent = function (_Component) {
           this.handleSwipeLeft(1, event);
         }
         if (this.movePosition.deltaY < -tolerance) {
-          this.props.handleSwipeUp(1, event);
+          this.handleSwipeUp(1, event);
         } else if (this.movePosition.deltaY > tolerance) {
-          this.props.handleSwipeDown(1, event);
+          this.handleSwipeDown(1, event);
         }
       }
 
