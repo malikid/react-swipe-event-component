@@ -58,3 +58,22 @@ export default SwipeEventExample;
 - Let me know if there's any issue.
 - Welcome for submitting PRssss ;)
 - Don't hesitate to contribute!
+
+
+### Changelog
+
+#### [0.2.2] - 2017-08-29
+##### Added
+- Changelog in README.
+
+#### [0.2.1] - 2017-08-29
+##### Added
+- Wheel events.
+
+## [0.1.2] - 2017-08-23
+##### Changed
+- Fix some inheritance issues.
+
+## [0.1.1] - 2017-08-22
+##### Added
+- This project.

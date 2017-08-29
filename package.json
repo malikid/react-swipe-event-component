@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-event-component",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Extend this component, swipe and wheel events are well-handled.",
   "main": "index.js",
   "scripts": {
