@@ -66,6 +66,11 @@ export default SwipeEventExample;
 
 ## Changelog
 
+### [0.2.3] - 2017-08-29
+#### Changed
+- README.
+- The name of this component in example.
+
 ### [0.2.2] - 2017-08-29
 #### Added
 - Changelog in README.
