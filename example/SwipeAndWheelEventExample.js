@@ -1,7 +1,7 @@
 import React from "react";
-import ReactSwipeAndWheelEventComponent from "ReactSwipeEventComponent";
+import ReactEventComponent from "ReactSwipeEventComponent";
 
-class SwipeAndWheelEventExample extends ReactSwipeAndWheelEventComponent {
+class SwipeAndWheelEventExample extends ReactEventComponent {
   constructor(props) {
     super(props);
 

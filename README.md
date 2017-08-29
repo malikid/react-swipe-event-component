@@ -22,9 +22,9 @@ Extend this component and swipe events are well-handled.
 2. Extend ReactSwipeEventComponent instead of Component (import from React). For example:
 ```javascript
 import React from "react";
-import ReactSwipeEventComponent from "react-swipe-event-component";
+import ReactEventComponent from "react-swipe-event-component";
 
-class SwipeEventExample extends ReactSwipeEventComponent {
+class SwipeAndWheelEventExample extends ReactEventComponent {
   constructor(props) {
     super(props);
 
@@ -37,6 +37,10 @@ class SwipeEventExample extends ReactSwipeEventComponent {
   handleSwipeRight() { /* Do something while swipe right is detected */ }
   handleSwipeUp() { /* Do something while swipe up is detected */ }
   handleSwipeDown() { /* Do something while swipe down is detected */ }
+  handleWheelLeft() { /* Do something while wheel left is detected */ }
+  handleWheelRight() { /* Do something while wheel right is detected */ }
+  handleWheelUp() { /* Do something while wheel up is detected */ }
+  handleWheelDown() { /* Do something while wheel down is detected */ }
 
   // Add {...this.touchEventProperties} to the element which need to detect swipe events
   render() {
@@ -69,6 +73,9 @@ export default SwipeEventExample;
 ### [0.2.1] - 2017-08-29
 #### Added
 - Wheel events.
+
+#### Changed
+- Exchange swipe left and swipe right events to each other.
 
 ### [0.1.2] - 2017-08-23
 #### Changed
