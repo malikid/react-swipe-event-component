@@ -9758,13 +9758,13 @@ var _reactDom = __webpack_require__(98);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _SwipeEventExample = __webpack_require__(184);
+var _SwipeAndWheelEventExample = __webpack_require__(184);
 
-var _SwipeEventExample2 = _interopRequireDefault(_SwipeEventExample);
+var _SwipeAndWheelEventExample2 = _interopRequireDefault(_SwipeAndWheelEventExample);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_SwipeEventExample2.default, null), document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(_SwipeAndWheelEventExample2.default, null), document.getElementById('root'));
 
 /***/ }),
 /* 83 */
@@ -22423,16 +22423,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SwipeEventExample = function (_ReactSwipeEventCompo) {
-  _inherits(SwipeEventExample, _ReactSwipeEventCompo);
+var SwipeAndWheelEventExample = function (_ReactSwipeAndWheelEv) {
+  _inherits(SwipeAndWheelEventExample, _ReactSwipeAndWheelEv);
 
-  function SwipeEventExample(props) {
-    _classCallCheck(this, SwipeEventExample);
+  function SwipeAndWheelEventExample(props) {
+    _classCallCheck(this, SwipeAndWheelEventExample);
 
-    var _this = _possibleConstructorReturn(this, (SwipeEventExample.__proto__ || Object.getPrototypeOf(SwipeEventExample)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SwipeAndWheelEventExample.__proto__ || Object.getPrototypeOf(SwipeAndWheelEventExample)).call(this, props));
+
+    _this.defaultText = "Try swiping/wheeling right/left/up/down";
+    _this.delayTime = 1000;
 
     _this.state = {
-      text: "Try swiping right/left/up/down"
+      text: _this.defaultText
     };
 
     _this.divStyle = {
@@ -22447,13 +22450,11 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       fontSize: "50px"
     };
 
-    _this.delayTime = 1000;
-
     _this.setTolerance(30);
     return _this;
   }
 
-  _createClass(SwipeEventExample, [{
+  _createClass(SwipeAndWheelEventExample, [{
     key: "handleSwipeLeft",
     value: function handleSwipeLeft() {
       this.setState({
@@ -22486,13 +22487,45 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
       this.delayResetText();
     }
   }, {
+    key: "handleWheelLeft",
+    value: function handleWheelLeft() {
+      this.setState({
+        text: "You just wheel left!"
+      });
+      this.delayResetText();
+    }
+  }, {
+    key: "handleWheelRight",
+    value: function handleWheelRight() {
+      this.setState({
+        text: "You just wheel right!"
+      });
+      this.delayResetText();
+    }
+  }, {
+    key: "handleWheelUp",
+    value: function handleWheelUp() {
+      this.setState({
+        text: "You just wheel up!"
+      });
+      this.delayResetText();
+    }
+  }, {
+    key: "handleWheelDown",
+    value: function handleWheelDown() {
+      this.setState({
+        text: "You just wheel down!"
+      });
+      this.delayResetText();
+    }
+  }, {
     key: "delayResetText",
     value: function delayResetText() {
       var _this2 = this;
 
       setTimeout(function () {
         _this2.setState({
-          text: "Try swiping right/left/up/down"
+          text: _this2.defaultText
         });
       }, this.delayTime);
     }
@@ -22513,10 +22546,10 @@ var SwipeEventExample = function (_ReactSwipeEventCompo) {
     }
   }]);
 
-  return SwipeEventExample;
+  return SwipeAndWheelEventExample;
 }(_ReactSwipeEventComponent2.default);
 
-exports.default = SwipeEventExample;
+exports.default = SwipeAndWheelEventExample;
 
 /***/ }),
 /* 185 */
@@ -22557,6 +22590,18 @@ var ReactSwipeEventComponent = function (_Component) {
   }, {
     key: "handleSwipeDown",
     value: function handleSwipeDown() {}
+  }, {
+    key: "handleWheelLeft",
+    value: function handleWheelLeft() {}
+  }, {
+    key: "handleWheelRight",
+    value: function handleWheelRight() {}
+  }, {
+    key: "handleWheelUp",
+    value: function handleWheelUp() {}
+  }, {
+    key: "handleWheelDown",
+    value: function handleWheelDown() {}
 
     // Call this function in constructor if you want to customize tolerance
 
@@ -22576,7 +22621,7 @@ var ReactSwipeEventComponent = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ReactSwipeEventComponent.__proto__ || Object.getPrototypeOf(ReactSwipeEventComponent)).call(this, props));
 
     _this.setTolerance(10);
-    _this._fnBinding(_this, "_getPosition", "handleTouchStart", "handleTouchMove", "handleTouchEnd", "handleSwipeLeft", "handleSwipeRight");
+    _this._fnBinding(_this, "_handleWheel", "_getPosition", "_handleTouchStart", "_handleTouchMove", "_handleTouchEnd", "handleSwipeLeft", "handleSwipeRight");
     _this._setPropertiesForTouchEvents();
     return _this;
   }
@@ -22585,9 +22630,10 @@ var ReactSwipeEventComponent = function (_Component) {
     key: "_setPropertiesForTouchEvents",
     value: function _setPropertiesForTouchEvents() {
       this.touchEventProperties = {
-        onTouchStart: this.handleTouchStart,
-        onTouchMove: this.handleTouchMove,
-        onTouchEnd: this.handleTouchEnd
+        onTouchStart: this._handleTouchStart,
+        onTouchMove: this._handleTouchMove,
+        onTouchEnd: this._handleTouchEnd,
+        onWheel: this._handleWheel
       };
     }
   }, {
@@ -22623,8 +22669,8 @@ var ReactSwipeEventComponent = function (_Component) {
       return { x: screenX, y: screenY };
     }
   }, {
-    key: "handleTouchStart",
-    value: function handleTouchStart(event) {
+    key: "_handleTouchStart",
+    value: function _handleTouchStart(event) {
       var _getPosition = this._getPosition(event),
           x = _getPosition.x,
           y = _getPosition.y;
@@ -22632,8 +22678,8 @@ var ReactSwipeEventComponent = function (_Component) {
       this.moveStart = { x: x, y: y };
     }
   }, {
-    key: "handleTouchMove",
-    value: function handleTouchMove(event) {
+    key: "_handleTouchMove",
+    value: function _handleTouchMove(event) {
       var _getPosition2 = this._getPosition(event),
           x = _getPosition2.x,
           y = _getPosition2.y;
@@ -22656,15 +22702,15 @@ var ReactSwipeEventComponent = function (_Component) {
       this.movePosition = { deltaX: deltaX, deltaY: deltaY };
     }
   }, {
-    key: "handleTouchEnd",
-    value: function handleTouchEnd(event) {
+    key: "_handleTouchEnd",
+    value: function _handleTouchEnd(event) {
       var tolerance = this._getTolerance();
 
       if (this.moving) {
         if (this.movePosition.deltaX < -tolerance) {
-          this.handleSwipeRight(1, event);
-        } else if (this.movePosition.deltaX > tolerance) {
           this.handleSwipeLeft(1, event);
+        } else if (this.movePosition.deltaX > tolerance) {
+          this.handleSwipeRight(1, event);
         }
         if (this.movePosition.deltaY < -tolerance) {
           this.handleSwipeUp(1, event);
@@ -22676,6 +22722,23 @@ var ReactSwipeEventComponent = function (_Component) {
       this.moveStart = null;
       this.moving = false;
       this.movePosition = null;
+    }
+  }, {
+    key: "_handleWheel",
+    value: function _handleWheel(event) {
+      var deltaX = event.deltaX;
+      if (deltaX > 0) {
+        this.handleWheelLeft(deltaX);
+      } else if (deltaX < 0) {
+        this.handleWheelRight(deltaX);
+      }
+
+      var deltaY = event.deltaY;
+      if (deltaY > 0) {
+        this.handleWheelUp(deltaY);
+      } else if (deltaY < 0) {
+        this.handleWheelDown(deltaY);
+      }
     }
   }]);
 

@@ -1,12 +1,15 @@
 import React from "react";
-import ReactSwipeEventComponent from "ReactSwipeEventComponent";
+import ReactSwipeAndWheelEventComponent from "ReactSwipeEventComponent";
 
-class SwipeEventExample extends ReactSwipeEventComponent {
+class SwipeAndWheelEventExample extends ReactSwipeAndWheelEventComponent {
   constructor(props) {
     super(props);
-  
+
+    this.defaultText = "Try swiping/wheeling right/left/up/down";
+    this.delayTime = 1000;
+
     this.state = {
-      text: "Try swiping right/left/up/down",
+      text: this.defaultText,
     };
 
     this.divStyle = {
@@ -20,8 +23,6 @@ class SwipeEventExample extends ReactSwipeEventComponent {
     this.pStyle = {
       fontSize: "50px",
     };
-
-    this.delayTime = 1000;
 
     this.setTolerance(30);
   }
@@ -54,10 +55,38 @@ class SwipeEventExample extends ReactSwipeEventComponent {
     this.delayResetText();
   }
 
+  handleWheelLeft() {
+    this.setState({
+      text: "You just wheel left!"
+    });
+    this.delayResetText();
+  }
+
+  handleWheelRight() {
+    this.setState({
+      text: "You just wheel right!"
+    });
+    this.delayResetText();
+  }
+
+  handleWheelUp() {
+    this.setState({
+      text: "You just wheel up!"
+    });
+    this.delayResetText();
+  }
+
+  handleWheelDown() {
+    this.setState({
+      text: "You just wheel down!"
+    });
+    this.delayResetText();
+  }
+
   delayResetText() {
     setTimeout(() => {
       this.setState({
-        text: "Try swiping right/left/up/down",
+        text: this.defaultText,
       });
     }, this.delayTime);
   }
@@ -74,4 +103,4 @@ class SwipeEventExample extends ReactSwipeEventComponent {
   }
 }
 
-export default SwipeEventExample;
+export default SwipeAndWheelEventExample;

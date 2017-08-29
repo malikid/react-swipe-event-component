@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import SwipeEventExample from "./SwipeEventExample";
+import SwipeAndWheelEventExample from "./SwipeAndWheelEventExample";
 
 ReactDOM.render(
-  <SwipeEventExample />,
+  <SwipeAndWheelEventExample />,
   document.getElementById('root')
 );

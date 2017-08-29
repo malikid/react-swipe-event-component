@@ -1,7 +1,7 @@
 {
   "name": "react-swipe-event-component",
-  "version": "0.1.2",
-  "description": "Extend this component and swipe events are well-handled.",
+  "version": "0.2.1",
+  "description": "Extend this component, swipe and wheel events are well-handled.",
   "main": "index.js",
   "scripts": {
     "start": "webpack; webpack-dev-server --content-base example",
@@ -18,11 +18,12 @@
   "keywords": [
     "react",
     "react component",
+    "event",
     "swipe",
-    "swipe event",
     "touch",
-    "touch event",
-    "mobile"
+    "mobile",
+    "wheel",
+    "scroll"
   ],
   "author": "MingHo Chang <malikid.chang@gmail.com>",
   "license": "MIT",
